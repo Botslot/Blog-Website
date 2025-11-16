@@ -26,7 +26,6 @@ gravatar = Gravatar(app,
                     use_ssl=False,
                     base_url=None)
 
-# TODO: Configure Flask-Login
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -169,7 +168,6 @@ def show_post(post_id):
     return render_template("post.html", post=requested_post,form=form,gravatar=gravatar)
 
 
-# TODO: Use a decorator so only an admin user can create a new post
 @app.route("/new-post", methods=["GET", "POST"])
 @admin_only
 def add_new_post():
@@ -189,7 +187,6 @@ def add_new_post():
     return render_template("make-post.html", form=form)
 
 
-# TODO: Use a decorator so only an admin user can edit a post
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @admin_only
 def edit_post(post_id):
@@ -212,7 +209,6 @@ def edit_post(post_id):
     return render_template("make-post.html", form=edit_form, is_edit=True)
 
 
-# TODO: Use a decorator so only an admin user can delete a post
 @app.route("/delete/<int:post_id>")
 @admin_only
 def delete_post(post_id):
